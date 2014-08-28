@@ -3,11 +3,11 @@ import java.util.Arrays;
 
 public enum Signature{
     //(new byte[]{(byte)0x, ... }),
-    JPEG_PICTURE_FILE (new byte[]{(byte)0xff, (byte) 0xd8, (byte) 0xff}),
     DOC_MICROSOFT_OFFICE_FILE (new byte[]{(byte)0xD0, (byte) 0xCF, (byte) 0x11, (byte)0xE0, (byte)0xA1, (byte)0xB1, (byte)0x1A, (byte)0xE1}),
     DOCX_MICROSOFT_OFFICE_FILE (new byte[]{(byte)0x50, (byte)0x4B, (byte)0x03, (byte)0x04, (byte)0x14, (byte)0x00, (byte)0x06, (byte)0x00}),
     GIF_IMAGE_FILE (new byte[]{(byte)0x47, (byte)0x49, (byte)0x46, (byte)0x38}),
     ICO_IMAGE_FILE (new byte[]{(byte)0x00, (byte)0x00, (byte)0x01, (byte)0x00}),
+    JPEG_PICTURE_FILE (new byte[]{(byte)0xff, (byte) 0xd8, (byte) 0xff}),
     MP3_MUSIC_FILE (new byte[]{(byte)0x49, (byte)0x44, (byte)0x33}),
     MPG_MPEG_VIDEO_FILE (new byte[]{(byte)0x00, (byte)0x00, (byte)0x01,(byte)0xB3 }),
     MPG_DVD_VIDEO_FILE (new byte[]{(byte)0x00, (byte)0x00, (byte)0x01, (byte)0xBA }),
@@ -29,4 +29,10 @@ public enum Signature{
     public byte[] getBytes(){
         return Arrays.copyOf(signature,signature.length);
     }
+
+    //TODO Need check, if pos<signature.length (maybe must throw an exception or something...)
+    public byte getByte(int pos){
+        return signature[pos];
+    }
+
 }
