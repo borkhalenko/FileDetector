@@ -3,7 +3,6 @@ package com.borkhalenko.fd;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Set;
 
 public class SignatureDetector    {
@@ -40,12 +39,12 @@ public class SignatureDetector    {
         for (int currentByte=0; stream.available()>0; currentByte++){
             byte nextByte=stream.readByte();
             for (Signature s:signatureList){
-                if (signatureHashMap.get(s) && s.getByte(currentByte)!=nextByte) {
+                if (signatureHashMap.get(s)  && s.getSize()>currentByte && s.getByte(currentByte)!=nextByte) {
                     signatureHashMap.replace(s, true, false);
                 }
-                if (hasAvailableElements()==1)
-                    return availableElement().name();
             }
+            if (hasAvailableElements()==1)
+                return availableElement().name();
         }
         return null;
     }

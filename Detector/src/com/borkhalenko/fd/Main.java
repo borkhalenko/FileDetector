@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args){
         String sep= File.separator;
-        String fileName="emptyFile";
+        String fileName="docFile";
         String path="Detector"+sep+"DataFiles"+sep+fileName;
         DataInputStream iStream=null;
         try {
